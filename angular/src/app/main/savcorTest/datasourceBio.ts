@@ -1,0 +1,842 @@
+export let arauserData: object[] = [
+    {
+        USER_ID: 1,
+        USER_NAME: 'adm',
+        USER_REAL_NAME: 'Administrador',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 43,
+        AUDIT_MODE: null,
+        USER_PWD_CRC: 13208,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ59s=',
+        VendorId: 200,
+        LastModificationDate: '2019-08-16T09:03:02.213',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 2,
+        USER_NAME: 'rootfosa',
+        USER_REAL_NAME: 'Usuario Master de Red',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 1,
+        AUDIT_MODE: null,
+        USER_PWD_CRC: -19123,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ45g=',
+        VendorId: null,
+        LastModificationDate: null,
+        LastModificationBy: null,
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 5,
+        USER_NAME: 'k744809',
+        USER_REAL_NAME: 'Jose Carlos de Mello',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 30,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: 21294,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Rc=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:21:51.270',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 6,
+        USER_NAME: 'k744706',
+        USER_REAL_NAME: 'Ricardo Methol',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 10,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: -12617,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Rg=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:26:00.327',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 7,
+        USER_NAME: 'k744700',
+        USER_REAL_NAME: 'Carola Oddone',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 30,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: 14860,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Rk=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:15:55.503',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 9,
+        USER_NAME: 'k744787',
+        USER_REAL_NAME: 'Nubia Jesus',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 15,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: -16461,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Ro=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:24:40.203',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 11,
+        USER_NAME: 'k744695',
+        USER_REAL_NAME: 'Carlos Trambauer',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 12,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: 13886,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Rs=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:15:48.983',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 13,
+        USER_NAME: 'v750555',
+        USER_REAL_NAME: 'Gustavo Simoes',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 32,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: -19051,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ45k=',
+        VendorId: null,
+        LastModificationDate: null,
+        LastModificationBy: null,
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 14,
+        USER_NAME: 'v750554',
+        USER_REAL_NAME: 'Jaqueline Silva',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 32,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: 15740,
+        MUST_CHANGE_PWD: null,
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ45o=',
+        VendorId: null,
+        LastModificationDate: null,
+        LastModificationBy: null,
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }, {
+        USER_ID: 16,
+        USER_NAME: 'k744698',
+        USER_REAL_NAME: 'German Genta',
+        LAST_PWD_CHANGE: null,
+        PROF_ID: 16,
+        AUDIT_MODE: 'F',
+        USER_PWD_CRC: -15957,
+        MUST_CHANGE_PWD: 'F',
+        USER_EMAIL: '',
+        MOBILENUMBER: null,
+        PIN: null,
+        RECORD: 'AAAAAELQ5Rw=',
+        VendorId: 57,
+        LastModificationDate: '2019-06-05T16:10:51.593',
+        LastModificationBy: 'v775210',
+        CODLEVELTYPE: null,
+        CODPERSON: null
+    }
+];
+
+export let accessByRegionData: object[] = [
+    {
+        AccessByRegionId: 1,
+        ProfileId: 9,
+        UserId: 1,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: true,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 2,
+        ProfileId: 1,
+        UserId: 2,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2018-08-28T11:56:18.153',
+        LastModificationBy: 'k744804'
+    }, {
+        AccessByRegionId: 3,
+        ProfileId: 30,
+        UserId: 5,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 4,
+        ProfileId: 10,
+        UserId: 6,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 5,
+        ProfileId: 30,
+        UserId: 7,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 6,
+        ProfileId: 15,
+        UserId: 9,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 835,
+        ProfileId: 12,
+        UserId: 11,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 836,
+        ProfileId: 32,
+        UserId: 13,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }, {
+        AccessByRegionId: 837,
+        ProfileId: 32,
+        UserId: 14,
+        RegionId: 56350,
+        CanViewData: true,
+        CanInsertData: true,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsRegionAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        LastModificationDate: '2017-12-08T19:20:57.877',
+        LastModificationBy: null
+    }
+];
+
+
+export let accessByZoneData: object[] = [
+    {
+        AccessByZoneId: 1,
+        ProfileId: 12,
+        UserId: 11,
+        ZoneId: 56333,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 2,
+        ProfileId: 32,
+        UserId: 13,
+        ZoneId: 56333,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 3,
+        ProfileId: 32,
+        UserId: 14,
+        ZoneId: 56333,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 4,
+        ProfileId: 16,
+        UserId: 16,
+        ZoneId: 56333,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 114,
+        ProfileId: 9,
+        UserId: 1,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: true,
+        CanDeleteData: true,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 115,
+        ProfileId: 1,
+        UserId: 2,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 116,
+        ProfileId: 30,
+        UserId: 5,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 117,
+        ProfileId: 10,
+        UserId: 6,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 118,
+        ProfileId: 30,
+        UserId: 7,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: true,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 119,
+        ProfileId: 15,
+        UserId: 9,
+        ZoneId: 56327,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 227,
+        ProfileId: 9,
+        UserId: 1,
+        ZoneId: 56324,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }, {
+        AccessByZoneId: 228,
+        ProfileId: 1,
+        UserId: 2,
+        ZoneId: 56324,
+        CanViewData: true,
+        CanInsertData: false,
+        CanEditData: false,
+        CanDeleteData: false,
+        IsZoneAssigned: false,
+        IsMainSupervisor: false,
+        ShouldSendEmail: false,
+        CanApprove: false,
+        LastModificationDate: '2017-12-08T19:20:58.250',
+        LastModificationBy: null
+    }
+];
+
+export let araProfileData: object[] = [
+    {
+        PROF_ID: 1,
+        PROF_DESCRIPTION: 'Soporte - Seguridad y Config',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 10,
+        PROF_DESCRIPTION: 'Silvicultura - Coordinador',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 12,
+        PROF_DESCRIPTION: 'Auditoria',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 15,
+        PROF_DESCRIPTION: 'Planeamiento - Administrador',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 16,
+        PROF_DESCRIPTION: 'Cosecha - Jefe',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 30,
+        PROF_DESCRIPTION: 'Planeamiento - Usuario Clave',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 32,
+        PROF_DESCRIPTION: 'Soporte - Consultor',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }, {
+        PROF_ID: 43,
+        PROF_DESCRIPTION: 'Logistica - Movil Transportista',
+        CHANGE_PWD_DAYS: null,
+        MUST_CHANGE_PWD: 'F',
+        HIDE_DISABLE_COMP: 'T',
+        AUDIT_MODE: 'F',
+        ABBREV: null,
+        MOVILPROFILE: null
+    }
+];
+
+export let regionData: object[] = [
+    {
+        RegionId: 56346,
+        LocationTypeId: 12,
+        Name: 'Centro Sur',
+        IsActive: true
+    }, {
+        RegionId: 56347,
+        LocationTypeId: 12,
+        Name: 'No Definido',
+        IsActive: true
+    }, {
+        RegionId: 56348,
+        LocationTypeId: 12,
+        Name: 'Litoral Centro',
+        IsActive: true
+    }, {
+        RegionId: 56349,
+        LocationTypeId: 12,
+        Name: 'Litoral Norte',
+        IsActive: true
+    }, {
+        RegionId: 56350,
+        LocationTypeId: 12,
+        Name: 'Litoral Sur',
+        IsActive: true
+    }, {
+        RegionId: 56351,
+        LocationTypeId: 12,
+        Name: 'Tacuarembo',
+        IsActive: true
+    }, {
+        RegionId: 56352,
+        LocationTypeId: 12,
+        Name: 'Vivero San Francisco',
+        IsActive: true
+    }, {
+        RegionId: 56353,
+        LocationTypeId: 12,
+        Name: 'Vivero Santana',
+        IsActive: true
+    }, {
+        RegionId: 56354,
+        LocationTypeId: 12,
+        Name: 'Genética',
+        IsActive: true
+    }, {
+        RegionId: 62341,
+        LocationTypeId: 12,
+        Name: 'Canchas de Acopio',
+        IsActive: false
+    }, {
+        RegionId: 62343,
+        LocationTypeId: 12,
+        Name: 'Main Gate',
+        IsActive: false
+    }, {
+        RegionId: 62344,
+        LocationTypeId: 12,
+        Name: 'Planta UPM',
+        IsActive: false
+    }, {
+        RegionId: 62345,
+        LocationTypeId: 12,
+        Name: 'Proveedores de madera en planta',
+        IsActive: false
+    }, {
+        RegionId: 62346,
+        LocationTypeId: 12,
+        Name: 'Control flota de Transporte en FO',
+        IsActive: false
+    }, {
+        RegionId: 62907,
+        LocationTypeId: 12,
+        Name: 'Oficina Administrativa (Pdu\/MVD)',
+        IsActive: true
+    }
+];
+
+export let zoneData: object[] = [
+    {
+        ZoneId: 56321,
+        LocationTypeId: 8,
+        Name: 'Arevalo',
+        IsActive: true
+    }, {
+        ZoneId: 56322,
+        LocationTypeId: 8,
+        Name: 'Trinidad',
+        IsActive: true
+    }, {
+        ZoneId: 56323,
+        LocationTypeId: 8,
+        Name: 'Cerro Agudo',
+        IsActive: true
+    }, {
+        ZoneId: 56324,
+        LocationTypeId: 8,
+        Name: 'Cerro Chato',
+        IsActive: true
+    }, {
+        ZoneId: 56325,
+        LocationTypeId: 8,
+        Name: 'Cerro Colorado',
+        IsActive: true
+    }, {
+        ZoneId: 56326,
+        LocationTypeId: 8,
+        Name: 'Cerro del Arbolito',
+        IsActive: true
+    }, {
+        ZoneId: 56327,
+        LocationTypeId: 8,
+        Name: 'Durazno Sur-Florida',
+        IsActive: true
+    }, {
+        ZoneId: 56328,
+        LocationTypeId: 8,
+        Name: 'Guichon',
+        IsActive: true
+    }, {
+        ZoneId: 56329,
+        LocationTypeId: 8,
+        Name: 'Mercedes',
+        IsActive: true
+    }, {
+        ZoneId: 56330,
+        LocationTypeId: 8,
+        Name: 'Durazno-Carlos Reyles',
+        IsActive: true
+    }, {
+        ZoneId: 56331,
+        LocationTypeId: 8,
+        Name: 'Paso de la Cruz',
+        IsActive: true
+    }, {
+        ZoneId: 56332,
+        LocationTypeId: 8,
+        Name: 'Quebracho',
+        IsActive: true
+    }, {
+        ZoneId: 56333,
+        LocationTypeId: 8,
+        Name: 'Rocha',
+        IsActive: true
+    }, {
+        ZoneId: 56334,
+        LocationTypeId: 8,
+        Name: 'Ruta 90',
+        IsActive: true
+    }, {
+        ZoneId: 56335,
+        LocationTypeId: 8,
+        Name: 'Tres Bocas',
+        IsActive: true
+    }, {
+        ZoneId: 56336,
+        LocationTypeId: 8,
+        Name: 'Young',
+        IsActive: true
+    }, {
+        ZoneId: 56337,
+        LocationTypeId: 8,
+        Name: 'Zamora',
+        IsActive: true
+    }, {
+        ZoneId: 56338,
+        LocationTypeId: 8,
+        Name: 'El Carmen-San Jorge',
+        IsActive: true
+    }, {
+        ZoneId: 56339,
+        LocationTypeId: 8,
+        Name: 'Rivera',
+        IsActive: true
+    }, {
+        ZoneId: 56340,
+        LocationTypeId: 8,
+        Name: 'Melo-Treinta y tres',
+        IsActive: true
+    }, {
+        ZoneId: 56341,
+        LocationTypeId: 8,
+        Name: 'Acopio Yatay',
+        IsActive: true
+    }, {
+        ZoneId: 56342,
+        LocationTypeId: 8,
+        Name: 'Acopio Tbo',
+        IsActive: true
+    }, {
+        ZoneId: 56343,
+        LocationTypeId: 8,
+        Name: 'Vivero Santana',
+        IsActive: true
+    }, {
+        ZoneId: 56344,
+        LocationTypeId: 8,
+        Name: 'Vivero San Francisco',
+        IsActive: true
+    }, {
+        ZoneId: 56345,
+        LocationTypeId: 8,
+        Name: 'Genética',
+        IsActive: true
+    }, {
+        ZoneId: 56799,
+        LocationTypeId: 8,
+        Name: 'La Paloma',
+        IsActive: true
+    }, {
+        ZoneId: 56800,
+        LocationTypeId: 8,
+        Name: 'Rocha-Lavalleja',
+        IsActive: true
+    }, {
+        ZoneId: 56801,
+        LocationTypeId: 8,
+        Name: 'Rocha-Maldonado',
+        IsActive: true
+    }, {
+        ZoneId: 56802,
+        LocationTypeId: 8,
+        Name: 'Sarandí del Yi-Malbajar',
+        IsActive: true
+    }, {
+        ZoneId: 59445,
+        LocationTypeId: 8,
+        Name: 'Ruta 26',
+        IsActive: true
+    }, {
+        ZoneId: 59480,
+        LocationTypeId: 8,
+        Name: 'Colonia',
+        IsActive: true
+    }, {
+        ZoneId: 62857,
+        LocationTypeId: 8,
+        Name: 'Vivero San Francisco - No usar',
+        IsActive: true
+    }, {
+        ZoneId: 62858,
+        LocationTypeId: 8,
+        Name: 'Vivero Santana - No usar',
+        IsActive: true
+    }, {
+        ZoneId: 62860,
+        LocationTypeId: 8,
+        Name: 'Planta UPM',
+        IsActive: true
+    }, {
+        ZoneId: 62863,
+        LocationTypeId: 8,
+        Name: 'Cont flota de transporte en FO',
+        IsActive: true
+    }, {
+        ZoneId: 62871,
+        LocationTypeId: 8,
+        Name: 'Cancha de Acopio',
+        IsActive: true
+    }, {
+        ZoneId: 62998,
+        LocationTypeId: 8,
+        Name: 'OFICINA CENTRAL',
+        IsActive: true
+    }
+];

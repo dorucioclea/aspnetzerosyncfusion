@@ -1,0 +1,7 @@
+namespace Practia.AppDemo.DemoUiComponents.Dto
+{
+    public class StringOutput
+    {
+        public string Output { get; set; }
+    }
+}

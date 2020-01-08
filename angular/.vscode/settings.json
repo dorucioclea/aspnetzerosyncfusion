@@ -1,0 +1,18 @@
+{
+    "typescript.check.workspaceVersion": false,
+    "files.exclude": {
+        ".vs": true,
+        "*.csproj": true,
+        "*.csproj.user": true,
+        "*.sln": true,
+        "*.suo": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "bin": true,
+        "dist": true,
+        "obj": true,
+        "Properties": true
+    }
+}

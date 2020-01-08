@@ -1,0 +1,50 @@
+<div [@routerTransition]>
+    <ejs-grid
+        #grid
+        [dataSource]='araUserGridData'
+        [showColumnChooser]="true"
+        [allowSorting]="true"
+        [allowPaging]="true"
+        [allowResizing]="true"
+        [allowReordering]='true'
+        [allowFiltering]="true"
+        [allowGrouping]="true"
+        [filterSettings]='filterOptions'
+        [toolbar]='toolbarOptions'
+        [editSettings]='editSettings'
+        (dataBound)='dataBound()'
+        (actionBegin)='actionBegin($event)'
+        (rowSelected)="onRowSelected($event)"
+    >
+        <e-columns>
+            <e-column field='USER_ID' headerText='User ID' textAlign='Right' width=120 isPrimaryKey='true'></e-column>
+            <e-column field='USER_NAME' headerText='Name' width=150></e-column>
+            <e-column field='USER_REAL_NAME' headerText='Real Name' width=150></e-column>
+            <e-column field='PROF_ID' headerText='Profile ID' width=150 editType='dropdownedit'></e-column>
+            <e-column field='PROF_ID' headerText='Profile' width=150 editType='dropdownedit' [dataSource]='araProfileData' foreignKeyValue='PROF_DESCRIPTION'></e-column>
+            <e-column field='USER_EMAIL' headerText='Email' width=150></e-column>
+            <e-column field='VendorId' headerText='Vendor Id' width=150 editType='dropdownedit'></e-column>
+            <e-column field='LastModificationDate' headerText='Last Modification Date' format='yMd' width=120></e-column>
+            <e-column field='LastModificationBy' headerText='Last Modification By' width=150 editType='dropdownedit'></e-column>
+        </e-columns>
+    </ejs-grid>
+    <ejs-tab id="element">
+    <e-tabitems>
+        <e-tabitem [header]='headerText[0]'>
+            <ng-template #content>
+                <ejs-grid #childGrid [dataSource]='accessRegionGridData' [showColumnChooser]="true" [allowSorting]="true" [allowPaging]="true" [allowResizing]="true" [allowReordering]='true' [allowFiltering]="true" [allowGrouping]="true" [filterSettings]='filterOptions' [toolbar]='toolbarOptions'
+                    [editSettings]='editSettings' (dataBound)='dataBound()' (actionBegin)='actionBegin($event)'>
+                </ejs-grid>
+            </ng-template>
+        </e-tabitem>
+        <e-tabitem [header]='headerText[1]'>
+            <ng-template #content>
+                <ejs-grid #childGrid [dataSource]='accessZoneGridData' [showColumnChooser]="true" [allowSorting]="true" [allowPaging]="true" [allowResizing]="true" [allowReordering]='true' [allowFiltering]="true" [allowGrouping]="true" [filterSettings]='filterOptions'
+                    [toolbar]='toolbarOptions' [editSettings]='editSettings' (dataBound)='dataBound()' (actionBegin)='actionBegin($event)'>
+                </ejs-grid>
+            </ng-template>
+        </e-tabitem>
+    </e-tabitems>
+</ejs-tab>
+</div>
+
