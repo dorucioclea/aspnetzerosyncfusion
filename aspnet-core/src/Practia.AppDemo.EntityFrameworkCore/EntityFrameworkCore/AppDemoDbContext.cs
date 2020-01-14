@@ -1,4 +1,5 @@
-﻿using Abp.IdentityServer4;
+﻿using Practia.AppDemo.Dbo;
+using Abp.IdentityServer4;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -16,6 +17,12 @@ namespace Practia.AppDemo.EntityFrameworkCore
 {
     public class AppDemoDbContext : AbpZeroDbContext<Tenant, Role, User, AppDemoDbContext>, IAbpPersistedGrantDbContext
     {
+        public virtual DbSet<TestTable> TestTables { get; set; }
+
+        public virtual DbSet<Arauser> Arausers { get; set; }
+
+        public virtual DbSet<Araprofile> Araprofiles { get; set; }
+
         /* Define an IDbSet for each entity of the application */
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
@@ -42,7 +49,22 @@ namespace Practia.AppDemo.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BinaryObject>(b =>
+           
+           
+           
+            modelBuilder.Entity<TestTable>(t =>
+            {
+                t.HasIndex(e => new { e.TenantId });
+            });
+ modelBuilder.Entity<Arauser>(a =>
+            {
+                a.HasIndex(e => new { e.TenantId });
+            });
+ modelBuilder.Entity<Araprofile>(a =>
+            {
+                a.HasIndex(e => new { e.TenantId });
+            });
+ modelBuilder.Entity<BinaryObject>(b =>
             {
                 b.HasIndex(e => new { e.TenantId });
             });

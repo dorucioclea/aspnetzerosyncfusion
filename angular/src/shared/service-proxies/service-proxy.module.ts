@@ -1,10 +1,13 @@
-import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
+﻿import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import * as ApiServiceProxies from './service-proxies';
 
 @NgModule({
     providers: [
+        ApiServiceProxies.TestTablesServiceProxy,        
+        ApiServiceProxies.ArausersServiceProxy,        
+        ApiServiceProxies.AraprofilesServiceProxy,        
         ApiServiceProxies.AuditLogServiceProxy,
         ApiServiceProxies.CachingServiceProxy,
         ApiServiceProxies.ChatServiceProxy,
@@ -41,6 +44,9 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.PayPalPaymentServiceProxy,
         ApiServiceProxies.StripePaymentServiceProxy,
         ApiServiceProxies.DashboardCustomizationServiceProxy,
+        ApiServiceProxies.AraprofilesServiceProxy,
+        ApiServiceProxies.ArausersServiceProxy,
+        ApiServiceProxies.TestTablesServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

@@ -1,3 +1,5 @@
+﻿using Practia.AppDemo.Dbo.Dtos;
+using Practia.AppDemo.Dbo;
 using Abp.Application.Editions;
 using Abp.Application.Features;
 using Abp.Auditing;
@@ -41,6 +43,12 @@ namespace Practia.AppDemo
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditTestTableDto, TestTable>().ReverseMap();
+            configuration.CreateMap<TestTableDto, TestTable>().ReverseMap();
+            configuration.CreateMap<CreateOrEditArauserDto, Arauser>().ReverseMap();
+            configuration.CreateMap<ArauserDto, Arauser>().ReverseMap();
+            configuration.CreateMap<CreateOrEditAraprofileDto, Araprofile>().ReverseMap();
+            configuration.CreateMap<AraprofileDto, Araprofile>().ReverseMap();
             //Inputs
             configuration.CreateMap<CheckboxInputType, FeatureInputTypeDto>();
             configuration.CreateMap<SingleLineStringInputType, FeatureInputTypeDto>();

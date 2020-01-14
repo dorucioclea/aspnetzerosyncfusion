@@ -1,6 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
-  <texts>
+  <texts>    <text name="TestTable">Test table</text>
+    <text name="TestTablesHeaderInfo">Test tables header info</text>
+    <text name="CreateNewTestTable">Create new test table</text>
+    <text name="EditTestTable">Edit test table</text>
+    <text name="DeleteTestTable">Delete test table</text>
+    <text name="TestTables">Test tables</text>
+    <text name="Arauser">Arauser</text>
+    <text name="user_id">user _id</text>
+    <text name="user_name">user _name</text>
+    <text name="user_real_name">user _real _name</text>
+    <text name="user_email">user _email</text>
+    <text name="ArausersHeaderInfo">Arausers header info</text>
+    <text name="CreateNewArauser">Create new arauser</text>
+    <text name="EditArauser">Edit arauser</text>
+    <text name="DeleteArauser">Delete arauser</text>
+    <text name="Arausers">Arausers</text>
+    <text name="Araprofileprof_id">Araprofileprof _id</text>
+    <text name="PickAraprofile">Pick araprofile</text>
+    <text name="Dbo">Dbo</text>
+    <text name="Araprofile">Araprofile</text>
+    <text name="prof_id">prof _id</text>
+    <text name="prof_description">prof _description</text>
+    <text name="AraprofilesHeaderInfo">Araprofiles header info</text>
+    <text name="CreateNewAraprofile">Create new araprofile</text>
+    <text name="EditAraprofile">Edit araprofile</text>
+    <text name="DeleteAraprofile">Delete araprofile</text>
+    <text name="Araprofiles">Araprofiles</text>
+    <text name="{0}IsRequired">{0} is required.</text>
+    <text name="View">View</text>
+    <text name="Details">Details</text>
+    <text name="Pick">Pick</text>
+    <text name="True">True</text>
+    <text name="False">False</text>
+    <text name="MinValue">Min</text>
+    <text name="MaxValue">Max</text>
+
     <text name="HomePage">Home page</text>
     <text name="AboutUs">About us</text>
     <text name="Administration">Administration</text>

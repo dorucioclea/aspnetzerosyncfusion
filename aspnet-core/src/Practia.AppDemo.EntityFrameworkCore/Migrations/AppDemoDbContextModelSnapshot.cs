@@ -15,7 +15,7 @@ namespace Practia.AppDemo.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -23,31 +23,42 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
                     b.HasKey("Id");
@@ -61,23 +72,30 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .IsRequired()
+                        .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
                     b.HasKey("Id");
@@ -91,45 +109,61 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BrowserInfo")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("ClientIpAddress")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("ClientName")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("CustomData")
+                        .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
                     b.Property<string>("Exception")
+                        .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
-                    b.Property<int>("ExecutionDuration");
+                    b.Property<int>("ExecutionDuration")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("ExecutionTime");
+                    b.Property<DateTime>("ExecutionTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int?>("ImpersonatorTenantId");
+                    b.Property<int?>("ImpersonatorTenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("ImpersonatorUserId");
+                    b.Property<long?>("ImpersonatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MethodName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("Parameters")
+                        .HasColumnType("nvarchar(1024)")
                         .HasMaxLength(1024);
 
-                    b.Property<string>("ReturnValue");
+                    b.Property<string>("ReturnValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ServiceName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("UserId");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -146,22 +180,29 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsGranted");
+                    b.Property<bool>("IsGranted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -176,20 +217,27 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoleId");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -204,32 +252,45 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("UserLinkId");
+                    b.Property<long?>("UserLinkId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -251,20 +312,27 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -279,19 +347,24 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("LoginProvider")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -308,29 +381,39 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BrowserInfo")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("ClientIpAddress")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("ClientName")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte>("Result");
+                    b.Property<byte>("Result")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("TenancyName")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("UserId");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("UserNameOrEmailAddress")
+                        .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -346,19 +429,26 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<long>("OrganizationUnitId");
+                    b.Property<long>("OrganizationUnitId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -375,17 +465,23 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoleId");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -402,21 +498,28 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("ExpireDate");
+                    b.Property<DateTime?>("ExpireDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Value")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.HasKey("Id");
@@ -432,29 +535,39 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<bool>("IsAbandoned");
+                    b.Property<bool>("IsAbandoned")
+                        .HasColumnType("bit");
 
                     b.Property<string>("JobArgs")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(1048576);
 
                     b.Property<string>("JobType")
                         .IsRequired()
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
-                    b.Property<DateTime?>("LastTryTime");
+                    b.Property<DateTime?>("LastTryTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("NextTryTime");
+                    b.Property<DateTime>("NextTryTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte>("Priority");
+                    b.Property<byte>("Priority")
+                        .HasColumnType("tinyint");
 
-                    b.Property<short>("TryCount");
+                    b.Property<short>("TryCount")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 
@@ -467,25 +580,34 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("UserId");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Value")
+                        .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
                     b.HasKey("Id");
@@ -502,21 +624,28 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ChangeTime");
+                    b.Property<DateTime>("ChangeTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte>("ChangeType");
+                    b.Property<byte>("ChangeType")
+                        .HasColumnType("tinyint");
 
-                    b.Property<long>("EntityChangeSetId");
+                    b.Property<long>("EntityChangeSetId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EntityId")
+                        .HasColumnType("nvarchar(48)")
                         .HasMaxLength(48);
 
                     b.Property<string>("EntityTypeFullName")
+                        .HasColumnType("nvarchar(192)")
                         .HasMaxLength(192);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -531,31 +660,42 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BrowserInfo")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("ClientIpAddress")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("ClientName")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ExtensionData");
+                    b.Property<string>("ExtensionData")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ImpersonatorTenantId");
+                    b.Property<int?>("ImpersonatorTenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("ImpersonatorUserId");
+                    b.Property<long?>("ImpersonatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("UserId");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -572,23 +712,30 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("EntityChangeId");
+                    b.Property<long>("EntityChangeId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NewValue")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("OriginalValue")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("PropertyName")
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
                     b.Property<string>("PropertyTypeFullName")
+                        .HasColumnType("nvarchar(192)")
                         .HasMaxLength(192);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -600,25 +747,32 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Abp.IdentityServer4.PersistedGrantEntity", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("ClientId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Data")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(50000);
 
-                    b.Property<DateTime?>("Expiration");
+                    b.Property<DateTime?>("Expiration")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SubjectId")
+                        .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("Type")
                         .IsRequired()
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -632,36 +786,49 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsDisabled");
+                    b.Property<bool>("IsDisabled")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -674,32 +841,42 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Key")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("LanguageName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Source")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(67108864);
 
                     b.HasKey("Id");
@@ -712,40 +889,53 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(1048576);
 
                     b.Property<string>("DataTypeName")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("EntityId")
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("EntityTypeName")
+                        .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
                     b.Property<string>("ExcludedUserIds")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(131072);
 
                     b.Property<string>("NotificationName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
-                    b.Property<byte>("Severity");
+                    b.Property<byte>("Severity")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("TenantIds")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(131072);
 
                     b.Property<string>("UserIds")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(131072);
 
                     b.HasKey("Id");
@@ -756,27 +946,36 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EntityId")
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("EntityTypeName")
+                        .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
                     b.Property<string>("NotificationName")
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -790,34 +989,45 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(1048576);
 
                     b.Property<string>("DataTypeName")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("EntityId")
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
+                        .HasColumnType("nvarchar(512)")
                         .HasMaxLength(512);
 
                     b.Property<string>("EntityTypeName")
+                        .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
                     b.Property<string>("NotificationName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
 
-                    b.Property<byte>("Severity");
+                    b.Property<byte>("Severity")
+                        .HasColumnType("tinyint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -829,17 +1039,23 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("State");
+                    b.Property<int>("State")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("TenantNotificationId");
+                    b.Property<Guid>("TenantNotificationId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -852,33 +1068,45 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .HasColumnType("nvarchar(95)")
                         .HasMaxLength(95);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("ParentId");
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -893,19 +1121,26 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<long>("OrganizationUnitId");
+                    b.Property<long>("OrganizationUnitId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoleId");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -920,43 +1155,58 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<bool>("IsDefault");
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsStatic");
+                    b.Property<bool>("IsStatic")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
                     b.Property<string>("NormalizedName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -975,93 +1225,127 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccessFailedCount");
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("AuthenticationSource")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("EmailConfirmationCode")
+                        .HasColumnType("nvarchar(328)")
                         .HasMaxLength(328);
 
-                    b.Property<string>("GoogleAuthenticatorKey");
+                    b.Property<string>("GoogleAuthenticatorKey")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsEmailConfirmed");
+                    b.Property<bool>("IsEmailConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsLockoutEnabled");
+                    b.Property<bool>("IsLockoutEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsPhoneNumberConfirmed");
+                    b.Property<bool>("IsPhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsTwoFactorEnabled");
+                    b.Property<bool>("IsTwoFactorEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("LockoutEndDateUtc");
+                    b.Property<DateTime?>("LockoutEndDateUtc")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.Property<string>("NormalizedEmailAddress")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("PasswordResetCode")
+                        .HasColumnType("nvarchar(328)")
                         .HasMaxLength(328);
 
                     b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
-                    b.Property<Guid?>("ProfilePictureId");
+                    b.Property<Guid?>("ProfilePictureId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<bool>("ShouldChangePasswordOnNextLogin");
+                    b.Property<bool>("ShouldChangePasswordOnNextLogin")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("SignInToken");
+                    b.Property<string>("SignInToken")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("SignInTokenExpireTimeUtc");
+                    b.Property<DateTime?>("SignInTokenExpireTimeUtc")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Surname")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -1083,29 +1367,40 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Message")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(4096);
 
-                    b.Property<int>("ReadState");
+                    b.Property<int>("ReadState")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ReceiverReadState");
+                    b.Property<int>("ReceiverReadState")
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("SharedMessageId");
+                    b.Property<Guid?>("SharedMessageId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Side");
+                    b.Property<int>("Side")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TargetTenantId");
+                    b.Property<int?>("TargetTenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("TargetUserId");
+                    b.Property<long>("TargetUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -1120,31 +1415,100 @@ namespace Practia.AppDemo.Migrations
                     b.ToTable("AppChatMessages");
                 });
 
+            modelBuilder.Entity("Practia.AppDemo.Dbo.Araprofile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("prof_description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("prof_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.ToTable("araprofiles");
+                });
+
+            modelBuilder.Entity("Practia.AppDemo.Dbo.Arauser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("prof_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("user_email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("user_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("user_real_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.HasIndex("prof_id");
+
+                    b.ToTable("arausers");
+                });
+
             modelBuilder.Entity("Practia.AppDemo.Friendships.Friendship", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("FriendProfilePictureId");
+                    b.Property<Guid?>("FriendProfilePictureId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FriendTenancyName");
+                    b.Property<string>("FriendTenancyName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FriendTenantId");
+                    b.Property<int?>("FriendTenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("FriendUserId");
+                    b.Property<long>("FriendUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("FriendUserName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int>("State");
+                    b.Property<int>("State")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -1163,17 +1527,23 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("InvoiceDate");
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("InvoiceNo");
+                    b.Property<string>("InvoiceNo")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenantAddress");
+                    b.Property<string>("TenantAddress")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenantLegalName");
+                    b.Property<string>("TenantLegalName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenantTaxNo");
+                    b.Property<string>("TenantTaxNo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1184,47 +1554,68 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Amount");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("DayCount");
+                    b.Property<int>("DayCount")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EditionId");
+                    b.Property<int>("EditionId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ErrorUrl");
+                    b.Property<string>("ErrorUrl")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExternalPaymentId");
+                    b.Property<string>("ExternalPaymentId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Gateway");
+                    b.Property<int>("Gateway")
+                        .HasColumnType("int");
 
-                    b.Property<string>("InvoiceNo");
+                    b.Property<string>("InvoiceNo")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsRecurring");
+                    b.Property<bool>("IsRecurring")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("PaymentPeriodType");
+                    b.Property<int?>("PaymentPeriodType")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Status");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
-                    b.Property<string>("SuccessUrl");
+                    b.Property<string>("SuccessUrl")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TenantId");
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1241,48 +1632,67 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConnectionString")
+                        .HasColumnType("nvarchar(1024)")
                         .HasMaxLength(1024);
 
-                    b.Property<DateTime>("CreationTime");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CustomCssId");
+                    b.Property<Guid?>("CustomCssId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int?>("EditionId");
+                    b.Property<int?>("EditionId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsInTrialPeriod");
+                    b.Property<bool>("IsInTrialPeriod")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastModificationTime");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LogoFileType")
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<Guid?>("LogoId");
+                    b.Property<Guid?>("LogoId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<DateTime?>("SubscriptionEndDateUtc");
+                    b.Property<DateTime?>("SubscriptionEndDateUtc")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("SubscriptionPaymentType");
+                    b.Property<int>("SubscriptionPaymentType")
+                        .HasColumnType("int");
 
                     b.Property<string>("TenancyName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
                     b.HasKey("Id");
@@ -1307,12 +1717,15 @@ namespace Practia.AppDemo.Migrations
             modelBuilder.Entity("Practia.AppDemo.Storage.BinaryObject", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<byte[]>("Bytes")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1325,19 +1738,26 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.HasBaseType("Abp.Application.Editions.Edition");
 
-                    b.Property<decimal?>("AnnualPrice");
+                    b.Property<decimal?>("AnnualPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("DailyPrice");
+                    b.Property<decimal?>("DailyPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ExpiringEditionId");
+                    b.Property<int?>("ExpiringEditionId")
+                        .HasColumnType("int");
 
-                    b.Property<decimal?>("MonthlyPrice");
+                    b.Property<decimal?>("MonthlyPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("TrialDayCount");
+                    b.Property<int?>("TrialDayCount")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("WaitingDayAfterExpire");
+                    b.Property<int?>("WaitingDayAfterExpire")
+                        .HasColumnType("int");
 
-                    b.Property<decimal?>("WeeklyPrice");
+                    b.Property<decimal?>("WeeklyPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.ToTable("AbpEditions");
 
@@ -1348,7 +1768,8 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.HasBaseType("Abp.Application.Features.FeatureSetting");
 
-                    b.Property<int>("EditionId");
+                    b.Property<int>("EditionId")
+                        .HasColumnType("int");
 
                     b.HasIndex("EditionId", "Name");
 
@@ -1372,7 +1793,8 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.HasBaseType("Abp.Authorization.PermissionSetting");
 
-                    b.Property<int>("RoleId");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasIndex("RoleId");
 
@@ -1385,7 +1807,8 @@ namespace Practia.AppDemo.Migrations
                 {
                     b.HasBaseType("Abp.Authorization.PermissionSetting");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasIndex("UserId");
 
@@ -1396,73 +1819,81 @@ namespace Practia.AppDemo.Migrations
 
             modelBuilder.Entity("Abp.Authorization.Roles.RoleClaim", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Roles.Role")
+                    b.HasOne("Practia.AppDemo.Authorization.Roles.Role", null)
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("OrganizationUnits")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Tokens")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Settings")
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
                 {
-                    b.HasOne("Abp.EntityHistory.EntityChangeSet")
+                    b.HasOne("Abp.EntityHistory.EntityChangeSet", null)
                         .WithMany("EntityChanges")
                         .HasForeignKey("EntityChangeSetId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
                 {
-                    b.HasOne("Abp.EntityHistory.EntityChange")
+                    b.HasOne("Abp.EntityHistory.EntityChange", null)
                         .WithMany("PropertyChanges")
                         .HasForeignKey("EntityChangeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1502,12 +1933,20 @@ namespace Practia.AppDemo.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("Practia.AppDemo.Dbo.Arauser", b =>
+                {
+                    b.HasOne("Practia.AppDemo.Dbo.Araprofile", "prof_Fk")
+                        .WithMany()
+                        .HasForeignKey("prof_id");
+                });
+
             modelBuilder.Entity("Practia.AppDemo.MultiTenancy.Payments.SubscriptionPayment", b =>
                 {
                     b.HasOne("Abp.Application.Editions.Edition", "Edition")
                         .WithMany()
                         .HasForeignKey("EditionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Practia.AppDemo.MultiTenancy.Tenant", b =>
@@ -1534,23 +1973,26 @@ namespace Practia.AppDemo.Migrations
                     b.HasOne("Abp.Application.Editions.Edition", "Edition")
                         .WithMany()
                         .HasForeignKey("EditionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Roles.RolePermissionSetting", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Roles.Role")
+                    b.HasOne("Practia.AppDemo.Authorization.Roles.Role", null)
                         .WithMany("Permissions")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserPermissionSetting", b =>
                 {
-                    b.HasOne("Practia.AppDemo.Authorization.Users.User")
+                    b.HasOne("Practia.AppDemo.Authorization.Users.User", null)
                         .WithMany("Permissions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -6,6 +6,21 @@
     /// </summary>
     public static class AppPermissions
     {
+        public const string Pages_TestTables = "Pages.TestTables";
+        public const string Pages_TestTables_Create = "Pages.TestTables.Create";
+        public const string Pages_TestTables_Edit = "Pages.TestTables.Edit";
+        public const string Pages_TestTables_Delete = "Pages.TestTables.Delete";
+
+        public const string Pages_Arausers = "Pages.Arausers";
+        public const string Pages_Arausers_Create = "Pages.Arausers.Create";
+        public const string Pages_Arausers_Edit = "Pages.Arausers.Edit";
+        public const string Pages_Arausers_Delete = "Pages.Arausers.Delete";
+
+        public const string Pages_Araprofiles = "Pages.Araprofiles";
+        public const string Pages_Araprofiles_Create = "Pages.Araprofiles.Create";
+        public const string Pages_Araprofiles_Edit = "Pages.Araprofiles.Edit";
+        public const string Pages_Araprofiles_Delete = "Pages.Araprofiles.Delete";
+
         //COMMON PERMISSIONS (FOR BOTH OF TENANTS AND HOST)
 
         public const string Pages = "Pages";

@@ -29,6 +29,27 @@ namespace Practia.AppDemo.Authorization
             //COMMON PERMISSIONS (FOR BOTH OF TENANTS AND HOST)
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
+
+            var testTables = pages.CreateChildPermission(AppPermissions.Pages_TestTables, L("TestTables"));
+            testTables.CreateChildPermission(AppPermissions.Pages_TestTables_Create, L("CreateNewTestTable"));
+            testTables.CreateChildPermission(AppPermissions.Pages_TestTables_Edit, L("EditTestTable"));
+            testTables.CreateChildPermission(AppPermissions.Pages_TestTables_Delete, L("DeleteTestTable"));
+
+
+
+            var arausers = pages.CreateChildPermission(AppPermissions.Pages_Arausers, L("Arausers"));
+            arausers.CreateChildPermission(AppPermissions.Pages_Arausers_Create, L("CreateNewArauser"));
+            arausers.CreateChildPermission(AppPermissions.Pages_Arausers_Edit, L("EditArauser"));
+            arausers.CreateChildPermission(AppPermissions.Pages_Arausers_Delete, L("DeleteArauser"));
+
+
+
+            var araprofiles = pages.CreateChildPermission(AppPermissions.Pages_Araprofiles, L("Araprofiles"));
+            araprofiles.CreateChildPermission(AppPermissions.Pages_Araprofiles_Create, L("CreateNewAraprofile"));
+            araprofiles.CreateChildPermission(AppPermissions.Pages_Araprofiles_Edit, L("EditAraprofile"));
+            araprofiles.CreateChildPermission(AppPermissions.Pages_Araprofiles_Delete, L("DeleteAraprofile"));
+
+
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));
 
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
