@@ -1,15 +1,15 @@
-﻿import { Component, ViewChild, Injector, Output, EventEmitter } from '@angular/core';
+﻿import { Component, ViewChild, Injector, Output, EventEmitter} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
-import { AraprofilesServiceProxy, CreateOrEditAraprofileDto } from '@shared/service-proxies/service-proxies';
+import { TestServiceProxy, CreateOrEditTestDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as moment from 'moment';
 
 @Component({
-    selector: 'createOrEditAraprofileModal',
-    templateUrl: './create-or-edit-araprofile-modal.component.html'
+    selector: 'createOrEditTestModal',
+    templateUrl: './create-or-edit-test-modal.component.html'
 })
-export class CreateOrEditAraprofileModalComponent extends AppComponentBase {
+export class CreateOrEditTestModalComponent extends AppComponentBase {
 
     @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective;
 
@@ -18,27 +18,28 @@ export class CreateOrEditAraprofileModalComponent extends AppComponentBase {
     active = false;
     saving = false;
 
-    araprofile: CreateOrEditAraprofileDto = new CreateOrEditAraprofileDto();
+    test: CreateOrEditTestDto = new CreateOrEditTestDto();
 
 
 
     constructor(
         injector: Injector,
-        private _araprofilesServiceProxy: AraprofilesServiceProxy
+        private _testServiceProxy: TestServiceProxy
     ) {
         super(injector);
     }
 
-    show(araprofileId?: number): void {
-        if (!araprofileId) {
-            this.araprofile = new CreateOrEditAraprofileDto();
-            this.araprofile.id = araprofileId;
+    show(testId?: number): void {
+
+        if (!testId) {
+            this.test = new CreateOrEditTestDto();
+            this.test.id = testId;
 
             this.active = true;
             this.modal.show();
         } else {
-            this._araprofilesServiceProxy.getAraprofileForEdit(araprofileId).subscribe(result => {
-                this.araprofile = result.araprofile;
+            this._testServiceProxy.getTestForEdit(testId).subscribe(result => {
+                this.test = result.test;
 
 
                 this.active = true;
@@ -51,7 +52,7 @@ export class CreateOrEditAraprofileModalComponent extends AppComponentBase {
             this.saving = true;
 
 			
-            this._araprofilesServiceProxy.createOrEdit(this.araprofile)
+            this._testServiceProxy.createOrEdit(this.test)
              .pipe(finalize(() => { this.saving = false;}))
              .subscribe(() => {
                 this.notify.info(this.l('SavedSuccessfully'));

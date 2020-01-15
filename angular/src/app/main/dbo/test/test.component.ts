@@ -1,11 +1,11 @@
-﻿import { Component, Injector, ViewEncapsulation, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, Injector, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AraprofilesServiceProxy, AraprofileDto  } from '@shared/service-proxies/service-proxies';
+import { TestServiceProxy, TestDto  } from '@shared/service-proxies/service-proxies';
 import { NotifyService } from '@abp/notify/notify.service';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { TokenAuthServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditAraprofileModalComponent } from './create-or-edit-araprofile-modal.component';
-import { ViewAraprofileModalComponent } from './view-araprofile-modal.component';
+import { CreateOrEditTestModalComponent } from './create-or-edit-test-modal.component';
+import { ViewTestModalComponent } from './view-test-modal.component';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { Table } from 'primeng/components/table/table';
 import { Paginator } from 'primeng/components/paginator/paginator';
@@ -15,28 +15,28 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 @Component({
-    templateUrl: './araprofiles.component.html',
+    templateUrl: './test.component.html',
     encapsulation: ViewEncapsulation.None,
     animations: [appModuleAnimation()]
 })
-export class AraprofilesComponent extends AppComponentBase implements AfterViewInit {
+export class TestComponent extends AppComponentBase {
 
-    @ViewChild('createOrEditAraprofileModal', { static: true }) createOrEditAraprofileModal: CreateOrEditAraprofileModalComponent;
-    @ViewChild('viewAraprofileModalComponent', { static: true }) viewAraprofileModal: ViewAraprofileModalComponent;
+    @ViewChild('createOrEditTestModal', { static: true }) createOrEditTestModal: CreateOrEditTestModalComponent;
+    @ViewChild('viewTestModalComponent', { static: true }) viewTestModal: ViewTestModalComponent;
     @ViewChild('dataTable', { static: true }) dataTable: Table;
     @ViewChild('paginator', { static: true }) paginator: Paginator;
 
     advancedFiltersAreShown = false;
     filterText = '';
-    maxprof_idFilter : number;
-		maxprof_idFilterEmpty : number;
-		minprof_idFilter : number;
-		minprof_idFilterEmpty : number;
-    prof_descriptionFilter = '';
+    nameFilter = '';
+    codeFilter = '';
+
+
+
 
     constructor(
         injector: Injector,
-        private _araprofilesServiceProxy: AraprofilesServiceProxy,
+        private _testServiceProxy: TestServiceProxy,
         private _notifyService: NotifyService,
         private _tokenAuth: TokenAuthServiceProxy,
         private _activatedRoute: ActivatedRoute,
@@ -45,11 +45,7 @@ export class AraprofilesComponent extends AppComponentBase implements AfterViewI
         super(injector);
     }
 
-    ngAfterViewInit(){
-        this.createOrEditAraprofileModal.show();
-    }
-
-    getAraprofiles(event?: LazyLoadEvent) {
+    getTest(event?: LazyLoadEvent) {
         if (this.primengTableHelper.shouldResetPaging(event)) {
             this.paginator.changePage(0);
             return;
@@ -57,11 +53,10 @@ export class AraprofilesComponent extends AppComponentBase implements AfterViewI
 
         this.primengTableHelper.showLoadingIndicator();
 
-        this._araprofilesServiceProxy.getAll(
+        this._testServiceProxy.getAll(
             this.filterText,
-            this.maxprof_idFilter == null ? this.maxprof_idFilterEmpty: this.maxprof_idFilter,
-            this.minprof_idFilter == null ? this.minprof_idFilterEmpty: this.minprof_idFilter,
-            this.prof_descriptionFilter,
+            this.nameFilter,
+            this.codeFilter,
             this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getSkipCount(this.paginator, event),
             this.primengTableHelper.getMaxResultCount(this.paginator, event)
@@ -76,17 +71,17 @@ export class AraprofilesComponent extends AppComponentBase implements AfterViewI
         this.paginator.changePage(this.paginator.getPage());
     }
 
-    createAraprofile(): void {
-        this.createOrEditAraprofileModal.show();
+    createTest(): void {
+        this.createOrEditTestModal.show();
     }
 
-    deleteAraprofile(araprofile: AraprofileDto): void {
+    deleteTest(test: TestDto): void {
         this.message.confirm(
             '',
             this.l('AreYouSure'),
             (isConfirmed) => {
                 if (isConfirmed) {
-                    this._araprofilesServiceProxy.delete(araprofile.id)
+                    this._testServiceProxy.delete(test.id)
                         .subscribe(() => {
                             this.reloadPage();
                             this.notify.success(this.l('SuccessfullyDeleted'));
@@ -97,11 +92,10 @@ export class AraprofilesComponent extends AppComponentBase implements AfterViewI
     }
 
     exportToExcel(): void {
-        this._araprofilesServiceProxy.getAraprofilesToExcel(
+        this._testServiceProxy.getTestToExcel(
         this.filterText,
-            this.maxprof_idFilter == null ? this.maxprof_idFilterEmpty: this.maxprof_idFilter,
-            this.minprof_idFilter == null ? this.minprof_idFilterEmpty: this.minprof_idFilter,
-            this.prof_descriptionFilter,
+            this.nameFilter,
+            this.codeFilter,
         )
         .subscribe(result => {
             this._fileDownloadService.downloadTempFile(result);

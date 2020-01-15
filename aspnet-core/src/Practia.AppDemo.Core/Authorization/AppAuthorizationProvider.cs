@@ -30,6 +30,20 @@ namespace Practia.AppDemo.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
+            var resources = pages.CreateChildPermission(AppPermissions.Pages_Resources, L("Resources"));
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Create, L("CreateNewResource"));
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Edit, L("EditResource"));
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Delete, L("DeleteResource"));
+
+
+
+            var test = pages.CreateChildPermission(AppPermissions.Pages_Test, L("Test"));
+            test.CreateChildPermission(AppPermissions.Pages_Test_Create, L("CreateNewTest"));
+            test.CreateChildPermission(AppPermissions.Pages_Test_Edit, L("EditTest"));
+            test.CreateChildPermission(AppPermissions.Pages_Test_Delete, L("DeleteTest"));
+
+
+
             var testTables = pages.CreateChildPermission(AppPermissions.Pages_TestTables, L("TestTables"));
             testTables.CreateChildPermission(AppPermissions.Pages_TestTables_Create, L("CreateNewTestTable"));
             testTables.CreateChildPermission(AppPermissions.Pages_TestTables_Edit, L("EditTestTable"));

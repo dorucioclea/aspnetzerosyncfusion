@@ -17,6 +17,10 @@ namespace Practia.AppDemo.EntityFrameworkCore
 {
     public class AppDemoDbContext : AbpZeroDbContext<Tenant, Role, User, AppDemoDbContext>, IAbpPersistedGrantDbContext
     {
+        public virtual DbSet<Resource> Resources { get; set; }
+
+        public virtual DbSet<Test> Test { get; set; }
+
         public virtual DbSet<TestTable> TestTables { get; set; }
 
         public virtual DbSet<Arauser> Arausers { get; set; }
@@ -52,7 +56,17 @@ namespace Practia.AppDemo.EntityFrameworkCore
            
            
            
-            modelBuilder.Entity<TestTable>(t =>
+           
+           
+            modelBuilder.Entity<Resource>(r =>
+            {
+                r.HasIndex(e => new { e.TenantId });
+            });
+ modelBuilder.Entity<Test>(t =>
+            {
+                t.HasIndex(e => new { e.TenantId });
+            });
+ modelBuilder.Entity<TestTable>(t =>
             {
                 t.HasIndex(e => new { e.TenantId });
             });

@@ -2,6 +2,14 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppCommonModule } from '@app/shared/common/app-common.module';
+import { ResourcesComponent } from './dbo/resources/resources.component';
+import { ViewResourceModalComponent } from './dbo/resources/view-resource-modal.component';
+import { CreateOrEditResourceModalComponent } from './dbo/resources/create-or-edit-resource-modal.component';
+
+import { TestComponent } from './dbo/test/test.component';
+import { ViewTestModalComponent } from './dbo/test/view-test-modal.component';
+import { CreateOrEditTestModalComponent } from './dbo/test/create-or-edit-test-modal.component';
+
 import { TestTablesComponent } from './dbo/testTables/testTables.component';
 import { ViewTestTableModalComponent } from './dbo/testTables/view-testTable-modal.component';
 import { CreateOrEditTestTableModalComponent } from './dbo/testTables/create-or-edit-testTable-modal.component';
@@ -33,6 +41,7 @@ import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bo
 import { TabModule } from '@syncfusion/ej2-angular-navigations';
 import { GridModule, PageService, SortService, FilterService, GroupService, SearchService, ToolbarService, ReorderService, ResizeService, ColumnChooserService, EditService } from '@syncfusion/ej2-angular-grids';
 import { GridTestComponent } from './savcorTest/gridTest.component';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
 
@@ -58,9 +67,14 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
         BsDropdownModule.forRoot(),
         PopoverModule.forRoot(),
         TabModule,
-        GridModule
+        GridModule,
+        DialogModule
     ],
     declarations: [
+		ResourcesComponent,
+		ViewResourceModalComponent,		CreateOrEditResourceModalComponent,
+		TestComponent,
+		ViewTestModalComponent,		CreateOrEditTestModalComponent,
 		TestTablesComponent,
 		ViewTestTableModalComponent,		CreateOrEditTestTableModalComponent,
 		ArausersComponent,

@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewEncapsulation, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArausersServiceProxy, ArauserDto  } from '@shared/service-proxies/service-proxies';
 import { NotifyService } from '@abp/notify/notify.service';
@@ -13,8 +13,9 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { FileDownloadService } from '@shared/utils/file-download.service';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { GridComponent, DetailRowService, FilterSettingsModel, ToolbarItems, EditSettingsModel, SaveEventArgs, ForeignKeyService, SelectionService, RowSelectEventArgs } from '@syncfusion/ej2-angular-grids';
+import { GridComponent, DetailRowService, FilterSettingsModel, SelectionSettingsModel, ToolbarItems, EditSettingsModel, SaveEventArgs, ForeignKeyService, SelectionService, RowSelectEventArgs } from '@syncfusion/ej2-angular-grids';
 // import { arauserData, accessByRegionData, accessByZoneData, araProfileData, regionData, zoneData } from './datasourceBio';
+import { finalize } from 'rxjs/operators';
 
 @Component({
     templateUrl: './arausers.component.html',
@@ -22,7 +23,7 @@ import { GridComponent, DetailRowService, FilterSettingsModel, ToolbarItems, Edi
     encapsulation: ViewEncapsulation.None,
     animations: [appModuleAnimation()]
 })
-export class ArausersComponent extends AppComponentBase{
+export class ArausersComponent extends AppComponentBase implements OnInit {
 
     @ViewChild('createOrEditArauserModal', { static: true }) createOrEditArauserModal: CreateOrEditArauserModalComponent;
     @ViewChild('viewArauserModalComponent', { static: true }) viewArauserModal: ViewArauserModalComponent;
@@ -51,12 +52,11 @@ export class ArausersComponent extends AppComponentBase{
     public filterOptions: FilterSettingsModel;
     public toolbarOptions: ToolbarItems[];
     public editSettings: EditSettingsModel;
+    public selectionSettings: SelectionSettingsModel;
     public orderData: object;
     // public key: string = null;
     // public headerText: object = [{ text: 'Access by region' }, { text: 'Access by zone' }];
-
-
-
+    saving = false;
 
     constructor(
         injector: Injector,
@@ -69,100 +69,121 @@ export class ArausersComponent extends AppComponentBase{
         super(injector);
     }
 
-    getArausers(event?: LazyLoadEvent) {
-        if (this.primengTableHelper.shouldResetPaging(event)) {
-            this.paginator.changePage(0);
-            return;
-        }
+    // getArausers(event?: LazyLoadEvent) {
+    //     if (this.primengTableHelper.shouldResetPaging(event)) {
+    //         this.paginator.changePage(0);
+    //         return;
+    //     }
 
-        this.primengTableHelper.showLoadingIndicator();
+    //     this.primengTableHelper.showLoadingIndicator();
 
-        this._arausersServiceProxy.getAll(
-            this.filterText,
-            this.maxuser_idFilter == null ? this.maxuser_idFilterEmpty: this.maxuser_idFilter,
-            this.minuser_idFilter == null ? this.minuser_idFilterEmpty: this.minuser_idFilter,
-            this.user_nameFilter,
-            this.user_real_nameFilter,
-            this.user_emailFilter,
-            this.araprofileprof_idFilter,
-            this.primengTableHelper.getSorting(this.dataTable),
-            this.primengTableHelper.getSkipCount(this.paginator, event),
-            this.primengTableHelper.getMaxResultCount(this.paginator, event)
-        ).subscribe(result => {
-            this.primengTableHelper.totalRecordsCount = result.totalCount;
-            this.primengTableHelper.records = result.items;
-            console.log('result', result)
-            console.log('result.items', result.items)
-            this.araUserGridData = result.items;
-            this.primengTableHelper.hideLoadingIndicator();
-        });
-    }
+    //     this._arausersServiceProxy.getAll(
+    //         this.filterText,
+    //         this.maxuser_idFilter == null ? this.maxuser_idFilterEmpty: this.maxuser_idFilter,
+    //         this.minuser_idFilter == null ? this.minuser_idFilterEmpty: this.minuser_idFilter,
+    //         this.user_nameFilter,
+    //         this.user_real_nameFilter,
+    //         this.user_emailFilter,
+    //         this.araprofileprof_idFilter,
+    //         this.primengTableHelper.getSorting(this.dataTable),
+    //         this.primengTableHelper.getSkipCount(this.paginator, event),
+    //         this.primengTableHelper.getMaxResultCount(this.paginator, event)
+    //     ).subscribe(result => {
+    //         this.primengTableHelper.totalRecordsCount = result.totalCount;
+    //         this.primengTableHelper.records = result.items;
+    //         this.araUserGridData = result.items;
+    //         this.primengTableHelper.hideLoadingIndicator();
+    //     });
+    // }
 
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
     }
 
-    createArauser(): void {
-        this.createOrEditArauserModal.show();
-    }
-
-    deleteArauser(arauser: ArauserDto): void {
-        this.message.confirm(
-            '',
-            this.l('AreYouSure'),
-            (isConfirmed) => {
-                if (isConfirmed) {
-                    this._arausersServiceProxy.delete(arauser.id)
-                        .subscribe(() => {
-                            this.reloadPage();
-                            this.notify.success(this.l('SuccessfullyDeleted'));
-                        });
-                }
-            }
-        );
-    }
-
-    exportToExcel(): void {
-        this._arausersServiceProxy.getArausersToExcel(
-        this.filterText,
-            this.maxuser_idFilter == null ? this.maxuser_idFilterEmpty: this.maxuser_idFilter,
-            this.minuser_idFilter == null ? this.minuser_idFilterEmpty: this.minuser_idFilter,
-            this.user_nameFilter,
-            this.user_real_nameFilter,
-            this.user_emailFilter,
-            this.araprofileprof_idFilter,
-        )
-        .subscribe(result => {
-            this._fileDownloadService.downloadTempFile(result);
-         });
-    }
-
-    // ngOnInit(): void {
-    //     this.getArausers();
-    //     // this.araUserGridData = arauserData;
-    //     // this.accessRegionGridData = [];
-    //     // this.accessZoneGridData = [];
-    //     // this.araProfileData = araProfileData;
-    //     // this.regionData = regionData;
-    //     // this.zoneData = zoneData;
-
-    //     // console.log(this.araUserGridData)
-
-    //     this.filterOptions = { type: 'Excel' };
-    //     this.toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search', 'ColumnChooser'];
-    //     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', showDeleteConfirmDialog: true };
+    // createArauser(): void {
+    //     this.createOrEditArauserModal.show();
     // }
 
-    dataBound() {
-        console.log('entre');
-        this._arausersServiceProxy.getAllNoFilter()
+    // deleteArauser(arauser: ArauserDto): void {
+
+    //     this.message.confirm(
+    //         '',
+    //         this.l('AreYouSure'),
+    //         (isConfirmed) => {
+    //             if (isConfirmed) {
+    //                 this._arausersServiceProxy.delete(arauser.id)
+    //                     .subscribe(() => {
+    //                         this.reloadPage();
+    //                         this.notify.success(this.l('SuccessfullyDeleted'));
+    //                     });
+    //             }
+    //         }
+    //     );
+    // }
+
+    // exportToExcel(): void {
+    //     this._arausersServiceProxy.getArausersToExcel(
+    //     this.filterText,
+    //         this.maxuser_idFilter == null ? this.maxuser_idFilterEmpty: this.maxuser_idFilter,
+    //         this.minuser_idFilter == null ? this.minuser_idFilterEmpty: this.minuser_idFilter,
+    //         this.user_nameFilter,
+    //         this.user_real_nameFilter,
+    //         this.user_emailFilter,
+    //         this.araprofileprof_idFilter,
+    //     )
+    //     .subscribe(result => {
+    //         this._fileDownloadService.downloadTempFile(result);
+    //      });
+    // }
+
+    ngOnInit(): void {
+
+        // this.createOrEditArauserModal.show();
+
+        this._arausersServiceProxy.getAll('', undefined, undefined, '', '', '', '', undefined, 0, 10)
         .subscribe(result => {
-            console.log('result', result);
-            console.log('result.items', result.items);
-            this.araUserGridData = JSON.parse(result.items)
+            this.araUserGridData = result.items.map(item => item.arauser);
         });
-        // this.araUserGridData = arauserData;
+
+        this.filterOptions = { type: 'Excel' };
+        this.toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search', 'ColumnChooser'];
+        this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', showDeleteConfirmDialog: true };
+        this.selectionSettings = { mode: 'Row', enableToggle: true, type: 'Multiple', enableSimpleMultiRowSelection: true };
+    }
+
+    dataBound(event) {
         Object.assign((this.grid.filterModule as any).filterOperators, { startsWith: 'contains' });
+    }
+
+    actionComplete(event){
+        console.info('entre updateArauser');
+        console.log(event);
+        console.log(event.data);
+
+        if ((event.action === 'add' || event.action === 'edit') && event.requestType === 'save'){
+            this.createArauser(event.data);
+        }
+        else if(event.requestType === 'delete'){
+            this.deleteArauser(event.data[0].id)
+        }
+    }
+
+    createArauser(arauser){
+        this.saving = true;
+        this._arausersServiceProxy.createOrEdit(arauser)
+             .pipe(finalize(() => { this.saving = false;}))
+             .subscribe(result => {
+                 console.log(result);
+                this.notify.info(this.l('SavedSuccessfully'));
+             });
+    }
+
+    deleteArauser(id: number): void {
+        this._arausersServiceProxy.delete(id)
+                        .subscribe(result => {
+                            console.log(result);
+                            this.notify.success(this.l('SuccessfullyDeleted'));
+                        });
     }
 
     // // public onRowSelected(args: RowSelectEventArgs): void {

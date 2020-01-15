@@ -27,6 +27,10 @@ export class AppNavigationService {
             new AppMenuItem('Arausers', 'Pages.Arausers', 'flaticon-more', '/app/main/dbo/arausers'),
             
             new AppMenuItem('TestTables', 'Pages.TestTables', 'flaticon-more', '/app/main/dbo/testTables'),
+            
+            new AppMenuItem('Test', 'Pages.Test', 'flaticon-more', '/app/main/dbo/test'),
+            
+            new AppMenuItem('Resources', 'Pages.Resources', 'flaticon-more', '/app/main/dbo/resources'),
              new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),

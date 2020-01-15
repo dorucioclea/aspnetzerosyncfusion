@@ -33,30 +33,30 @@ export class CreateOrEditArauserModalComponent extends AppComponentBase {
     }
 
     show(arauserId?: number): void {
+        this.modal.show();
+        // if (!arauserId) {
+        //     this.arauser = new CreateOrEditArauserDto();
+        //     this.arauser.id = arauserId;
+        //     this.araprofileprof_id = '';
 
-        if (!arauserId) {
-            this.arauser = new CreateOrEditArauserDto();
-            this.arauser.id = arauserId;
-            this.araprofileprof_id = '';
+        //     this.active = true;
+        //     this.modal.show();
+        // } else {
+        //     this._arausersServiceProxy.getArauserForEdit(arauserId).subscribe(result => {
+        //         this.arauser = result.arauser;
 
-            this.active = true;
-            this.modal.show();
-        } else {
-            this._arausersServiceProxy.getArauserForEdit(arauserId).subscribe(result => {
-                this.arauser = result.arauser;
+        //         this.araprofileprof_id = result.araprofileprof_id;
 
-                this.araprofileprof_id = result.araprofileprof_id;
-
-                this.active = true;
-                this.modal.show();
-            });
-        }
+        //         this.active = true;
+        //         this.modal.show();
+        //     });
+        // }
     }
 
     save(): void {
             this.saving = true;
 
-			
+			console.log(this.arauser);
             this._arausersServiceProxy.createOrEdit(this.arauser)
              .pipe(finalize(() => { this.saving = false;}))
              .subscribe(() => {

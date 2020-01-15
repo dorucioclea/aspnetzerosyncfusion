@@ -14,8 +14,6 @@
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
 				<button (click)="exportToExcel()" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> {{l("ExportToExcel")}}</button>
-                <button *ngIf="isGranted('Pages.Arausers.Create')" (click)="createArauser()" 
-			class="btn btn-primary blue"><i class="fa fa-plus"></i> {{l("CreateNewArauser")}}</button>
             </div>
         </div>
       </div>
@@ -23,70 +21,6 @@
     <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
         <div class="kt-portlet kt-portlet--mobile">
             <div class="kt-portlet__body">
-                <form class="kt-form" autocomplete="off">
-                    <div>
-                        <div class="row align-items-center">
-                            <div class="col-xl-12">
-                                <div class="form-group m-form__group align-items-center">
-                                    <div class="input-group">
-                                        <input [(ngModel)]="filterText" name="filterText" autoFocus class="form-control m-input" [placeholder]="l('SearchWithThreeDot')" type="text">
-                                        <span class="input-group-btn">
-                                            <button (click)="getArausers()" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-						 <div class="row" [hidden]="!advancedFiltersAreShown">
-						 	<div class="col-md-12">
-						         <div class="kt-separator kt-separator--border-dashed"></div>
-						     </div>
-
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-									<label for="Minuser_idFilter">{{l("MinMax")}} {{l("user_id")}}</label>
-									<div class="input-group">
-                                        <input type="number" class="form-control" id="Minuser_idFilter" [(ngModel)]="minuser_idFilter" placeholder="{{l('MinValue')}}" name="minuser_idFilter" />
-                                        <input type="number" class="form-control" [(ngModel)]="maxuser_idFilter" placeholder="{{l('MaxValue')}}" name="maxuser_idFilter" />
-									</div>
-                                </div>
-                            </div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="user_nameFilter">{{l("user_name")}}</label>
-									<input type="text" class="form-control" id="user_nameFilter" name="user_nameFilter" [(ngModel)]="user_nameFilter">
-								</div>
-                            </div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="user_real_nameFilter">{{l("user_real_name")}}</label>
-									<input type="text" class="form-control" id="user_real_nameFilter" name="user_real_nameFilter" [(ngModel)]="user_real_nameFilter">
-								</div>
-                            </div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="user_emailFilter">{{l("user_email")}}</label>
-									<input type="text" class="form-control" id="user_emailFilter" name="user_emailFilter" [(ngModel)]="user_emailFilter">
-								</div>
-                            </div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label for="Araprofileprof_idFilter">({{l("Araprofile")}}) {{l("prof_id")}}</label>
-									<input type="text" class="form-control" id="Araprofileprof_idFilter" name="araprofileprof_idFilter" [(ngModel)]="araprofileprof_idFilter">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-sm-12">
-                                <span class="clickable-item text-muted" *ngIf="!advancedFiltersAreShown" (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i class="fa fa-angle-down"></i> {{l("ShowAdvancedFilters")}}</span>
-                                <span class="clickable-item text-muted" *ngIf="advancedFiltersAreShown" (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i class="fa fa-angle-up"></i> {{l("HideAdvancedFilters")}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
                     <div>
                         <ejs-grid
                             #grid
@@ -101,9 +35,17 @@
                             [filterSettings]='filterOptions'
                             [toolbar]='toolbarOptions'
                             [editSettings]='editSettings'
-                            (dataBound)='dataBound()'
+                            [selectionSettings]='selectionSettings'
+                            (dataBound)='dataBound($event)'
+                            (actionComplete)='actionComplete($event)'
                         >
                             <e-columns>
+                                <e-column field='user_id' headerText='User ID' textAlign='Right' width=120 isPrimaryKey='true' [allowEditing]='false'></e-column>
+                                <e-column field='user_name' headerText='Name' width=150></e-column>
+                                <e-column field='user_real_name' headerText='Real Name' width=150></e-column>
+                                <e-column field='prof_id' headerText='Profile ID' width=150 editType='dropdownedit'></e-column>
+                                <!-- <e-column field='PROF_ID' headerText='Profile' width=150 editType='dropdownedit' [dataSource]='araProfileData' foreignKeyValue='PROF_DESCRIPTION'></e-column> -->
+                                <e-column field='user_email' headerText='Email' width=150></e-column>
                             </e-columns>
                         </ejs-grid>
                         <!-- <ejs-tab id="element">
@@ -125,15 +67,11 @@
                             </e-tabitems>
                         </ejs-tab> -->
                     </div>
-                
-                    
-                    <!--<Primeng-Datatable-End>-->
-                
             </div>
         </div>
     </div>
 
-    <createOrEditArauserModal #createOrEditArauserModal (modalSave)="getArausers()"></createOrEditArauserModal>
+    <createOrEditArauserModal #createOrEditArauserModal></createOrEditArauserModal>
     <viewArauserModal #viewArauserModal></viewArauserModal>
     
   </div>

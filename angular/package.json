@@ -29,6 +29,7 @@
     "@swimlane/ngx-charts": "^12.0.1",
     "@syncfusion/ej2-angular-grids": "^17.4.41",
     "@syncfusion/ej2-angular-navigations": "^17.4.41",
+    "@syncfusion/ej2-angular-popups": "^17.4.43",
     "abp-ng2-module": "^5.0.0",
     "abp-web-resources": "^4.1.0",
     "adal-angular": "^1.0.17",

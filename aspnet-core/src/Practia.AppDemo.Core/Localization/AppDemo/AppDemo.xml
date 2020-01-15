@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
-  <texts>    <text name="TestTable">Test table</text>
+  <texts>    <text name="Resource">Resource</text>
+    <text name="ResourcesHeaderInfo">Resources header info</text>
+    <text name="CreateNewResource">Create new resource</text>
+    <text name="EditResource">Edit resource</text>
+    <text name="DeleteResource">Delete resource</text>
+    <text name="Resources">Resources</text>
+    <text name="Test">Test</text>
+    <text name="TestHeaderInfo">Test header info</text>
+    <text name="CreateNewTest">Create new test</text>
+    <text name="EditTest">Edit test</text>
+    <text name="DeleteTest">Delete test</text>
+    <text name="TestTable">Test table</text>
     <text name="TestTablesHeaderInfo">Test tables header info</text>
     <text name="CreateNewTestTable">Create new test table</text>
     <text name="EditTestTable">Edit test table</text>

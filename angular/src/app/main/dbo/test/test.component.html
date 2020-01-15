@@ -4,18 +4,18 @@
       <div [class]="containerClass">
         <div class="kt-subheader__main">
             <h3 class="kt-subheader__title">
-                <span>{{l("Araprofiles")}}</span>
+                <span>{{l("Test")}}</span>
             </h3>
             <span class="kt-subheader__separator kt-subheader__separator--v"></span>
             <span class="kt-subheader__desc">
-                {{l("AraprofilesHeaderInfo")}}
+                {{l("TestHeaderInfo")}}
             </span>
         </div>
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
 				<button (click)="exportToExcel()" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> {{l("ExportToExcel")}}</button>
-                <button *ngIf="isGranted('Pages.Araprofiles.Create')" (click)="createAraprofile()" 
-			class="btn btn-primary blue"><i class="fa fa-plus" [hidden]="true"></i> {{l("CreateNewAraprofile")}}</button>
+                <button *ngIf="isGranted('Pages.Test.Create')" (click)="createTest()" 
+			class="btn btn-primary blue"><i class="fa fa-plus"></i> {{l("CreateNewTest")}}</button>
             </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
                                     <div class="input-group">
                                         <input [(ngModel)]="filterText" name="filterText" autoFocus class="form-control m-input" [placeholder]="l('SearchWithThreeDot')" type="text">
                                         <span class="input-group-btn">
-                                            <button (click)="getAraprofiles()" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
+                                            <button (click)="getTest()" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
                                         </span>
                                     </div>
                                 </div>
@@ -43,19 +43,16 @@
 						     </div>
 
 
-                            <div class="col-md-3">
-                                <div class="form-group">
-									<label for="Minprof_idFilter">{{l("MinMax")}} {{l("prof_id")}}</label>
-									<div class="input-group">
-                                        <input type="number" class="form-control" id="Minprof_idFilter" [(ngModel)]="minprof_idFilter" placeholder="{{l('MinValue')}}" name="minprof_idFilter" />
-                                        <input type="number" class="form-control" [(ngModel)]="maxprof_idFilter" placeholder="{{l('MaxValue')}}" name="maxprof_idFilter" />
-									</div>
-                                </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="NameFilter">{{l("Name")}}</label>
+									<input type="text" class="form-control" id="NameFilter" name="nameFilter" [(ngModel)]="nameFilter">
+								</div>
                             </div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<label for="prof_descriptionFilter">{{l("prof_description")}}</label>
-									<input type="text" class="form-control" id="prof_descriptionFilter" name="prof_descriptionFilter" [(ngModel)]="prof_descriptionFilter">
+									<label for="CodeFilter">{{l("Code")}}</label>
+									<input type="text" class="form-control" id="CodeFilter" name="codeFilter" [(ngModel)]="codeFilter">
 								</div>
                             </div>
 
@@ -74,7 +71,7 @@
                     <div class="primeng-datatable-container col-12"
                          [busyIf]="primengTableHelper.isLoading">
                         <p-table #dataTable
-                                     (onLazyLoad)="getAraprofiles($event)"
+                                     (onLazyLoad)="getTest($event)"
                                      [value]="primengTableHelper.records"
                                      rows="{{primengTableHelper.defaultRecordsCountPerPage}}"
                                      [paginator]="false"
@@ -85,14 +82,14 @@
                                      [resizableColumns]="primengTableHelper.resizableColumns">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th style="width: 130px" [hidden]="!isGrantedAny('Pages.Araprofiles.Edit', 'Pages.Araprofiles.Delete')">{{l('Actions')}}</th>
-                                    <th style="width: 150px" pSortableColumn="prof_id">
-                                        {{l('prof_id')}}
-                                        <p-sortIcon field="araprofile.prof_id"></p-sortIcon>
+                                    <th style="width: 130px" [hidden]="!isGrantedAny('Pages.Test.Edit', 'Pages.Test.Delete')">{{l('Actions')}}</th>
+                                    <th style="width: 150px" pSortableColumn="name">
+                                        {{l('Name')}}
+                                        <p-sortIcon field="test.name"></p-sortIcon>
                                     </th>
-                                    <th style="width: 150px" pSortableColumn="prof_description">
-                                        {{l('prof_description')}}
-                                        <p-sortIcon field="araprofile.prof_description"></p-sortIcon>
+                                    <th style="width: 150px" pSortableColumn="code">
+                                        {{l('Code')}}
+                                        <p-sortIcon field="test.code"></p-sortIcon>
                                     </th>
 
                                 </tr>
@@ -100,7 +97,7 @@
 							<ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td style="width: 130px"
-                                        [hidden]="!isGrantedAny('Pages.Araprofiles.Edit', 'Pages.Araprofiles.Delete')">
+                                        [hidden]="!isGrantedAny('Pages.Test.Edit', 'Pages.Test.Delete')">
                                        <div class="btn-group dropdown" dropdown container="body">
                                             <button class="dropdown-toggle btn btn-sm btn-primary" dropdownToggle>
                                                 <i class="fa fa-cog"></i><span class="caret"></span> {{l("Actions")}}
@@ -108,26 +105,26 @@
 												<ul class="dropdown-menu"  *dropdownMenu>
 												<li>
 													<a href="javascript:;"
-														(click)="viewAraprofileModal.show(record)">{{l('View')}}</a>
+														(click)="viewTestModal.show(record)">{{l('View')}}</a>
 												</li>
 												<li>
-													<a href="javascript:;" *ngIf="permission.isGranted('Pages.Araprofiles.Edit')"
-														(click)="createOrEditAraprofileModal.show(record.araprofile.id)">{{l('Edit')}}</a>
+													<a href="javascript:;" *ngIf="permission.isGranted('Pages.Test.Edit')"
+														(click)="createOrEditTestModal.show(record.test.id)">{{l('Edit')}}</a>
 												</li>
 												<li>
-											        <a href="javascript:;" *ngIf="permission.isGranted('Pages.Araprofiles.Delete')"
-														(click)="deleteAraprofile(record.araprofile)">{{l('Delete')}}</a>
+											        <a href="javascript:;" *ngIf="permission.isGranted('Pages.Test.Delete')"
+														(click)="deleteTest(record.test)">{{l('Delete')}}</a>
 												</li>
                                             </ul>
                                         </div>
                                     </td>
                                     <td style="width:150px">
-											<span class="ui-column-title"> {{l('prof_id')}}</span>
-											{{record.araprofile.prof_id}}
+											<span class="ui-column-title"> {{l('Name')}}</span>
+											{{record.test.name}}
 										</td>
                                     <td style="width:150px">
-											<span class="ui-column-title"> {{l('prof_description')}}</span>
-											{{record.araprofile.prof_description}}
+											<span class="ui-column-title"> {{l('Code')}}</span>
+											{{record.test.code}}
 										</td>
 
                                 </tr>
@@ -139,7 +136,7 @@
                         <div class="primeng-paging-container">
                             <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage"
                                          #paginator
-                                         (onPageChange)="getAraprofiles($event)"
+                                         (onPageChange)="getTest($event)"
                                          [totalRecords]="primengTableHelper.totalRecordsCount"
                                          [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                             </p-paginator>
@@ -154,8 +151,8 @@
         </div>
     </div>
 
-    <createOrEditAraprofileModal #createOrEditAraprofileModal (modalSave)="getAraprofiles()"></createOrEditAraprofileModal>
-    <viewAraprofileModal #viewAraprofileModal></viewAraprofileModal>
+    <createOrEditTestModal #createOrEditTestModal (modalSave)="getTest()"></createOrEditTestModal>
+    <viewTestModal #viewTestModal></viewTestModal>
     
   </div>
 </div>

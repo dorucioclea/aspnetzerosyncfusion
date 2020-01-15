@@ -43,6 +43,10 @@ namespace Practia.AppDemo
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditResourceDto, Resource>().ReverseMap();
+            configuration.CreateMap<ResourceDto, Resource>().ReverseMap();
+            configuration.CreateMap<CreateOrEditTestDto, Test>().ReverseMap();
+            configuration.CreateMap<TestDto, Test>().ReverseMap();
             configuration.CreateMap<CreateOrEditTestTableDto, TestTable>().ReverseMap();
             configuration.CreateMap<TestTableDto, TestTable>().ReverseMap();
             configuration.CreateMap<CreateOrEditArauserDto, Arauser>().ReverseMap();

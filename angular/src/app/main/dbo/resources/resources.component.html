@@ -1,0 +1,73 @@
+﻿<div [@routerTransition]>
+  <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+    <div class="kt-subheader kt-grid__item">
+      <div [class]="containerClass">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+                <span>{{l("Resources")}}</span>
+            </h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <span class="kt-subheader__desc">
+                {{l("ResourcesHeaderInfo")}}
+            </span>
+        </div>
+        <div class="kt-subheader__toolbar">
+            <div class="kt-subheader__wrapper">
+                <button (click)="onOpenDialog($event)" id="targetButton" class="btn btn-primary blue">Filtrar</button>
+                <!-- <button class="e-control e-btn" style="position: absolute;" id="targetButton" (click)="onOpenDialog($event)">Open Dialog</button> -->
+				<button (click)="exportToExcel()" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> {{l("ExportToExcel")}}</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__body">
+                <div>
+                    <ejs-grid
+                        #parentGrid
+                        [dataSource]='parentGridData'
+                        [showColumnChooser]="true"
+                        [allowSorting]="true"
+                        [allowPaging]="true"
+                        [allowResizing]="true"
+                        [allowReordering]='true'
+                        [allowFiltering]="true"
+                        [allowGrouping]="true"
+                        [filterSettings]='filterOptions'
+                        [toolbar]='toolbarOptions'
+                        [editSettings]='editSettings'
+                        [selectionSettings]='selectionSettings'
+                        (dataBound)='dataBound($event)'
+                        (actionComplete)='actionComplete($event)'
+                    >
+                        <e-columns>
+                        </e-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <createOrEditResourceModal #createOrEditResourceModal></createOrEditResourceModal>
+    <viewResourceModal #viewResourceModal></viewResourceModal> -->
+
+    <div #container class='root-container'></div>
+
+    <ejs-dialog id='dialog' #template showCloseIcon='true' height='250px' [target]='targetElement' width='435px' (close)='onClose()'>
+     <ng-template #header>
+            <div title="Filtro" class="e-icon-settings dlg-template"> Filtrar recursos </div>
+        <!-- </ng-template>
+        <ng-template #content> -->
+            <div class="dialogContent">
+                <span class="dialogText">Nombre</span>
+            </div>
+        <!-- </ng-template>
+       <ng-template #footerTemplate> -->
+            <input id="inVal" class="e-input" type="text" placeholder="Nombre"/>
+            <button id="sendButton" class="e-control e-btn e-primary sendButton" data-ripple="true" (click)='closeModal()'>Send</button>
+        </ng-template>
+      </ejs-dialog>
+    
+  </div>
+</div>
